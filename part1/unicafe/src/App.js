@@ -3,7 +3,10 @@ import './App.css';
 import {useState} from 'react';
 
 const Button = (props) => <button onClick={props.onClick}>{props.text}</button>;
-const StatisticLine = (props) => <div>{props.text} {props.value}</div>;
+const StatisticLine = (props) => <tr>
+        <td>{props.text}</td>
+        <td>{props.value}</td>
+    </tr>;
 
 const Statistics = (props) => {
     const getAverage = () => {
@@ -20,18 +23,22 @@ const Statistics = (props) => {
         <>
             <h2>statistics</h2>
             {/*Getting line from StatisticLine component*/}
-            <StatisticLine text="good" value={props.good}/>
-            <StatisticLine text="neutral" value={props.neutral}/>
-            <StatisticLine text="bad" value={props.bad}/>
-            <StatisticLine text="all" value={props.all}/>
-            <StatisticLine text="average" value={getAverage(props.good, props.neutral, props.bad, props.all)}/>
-            <StatisticLine text="positive" value={getPositive() + ' %'}/>
+            <table>
+                <tbody>
+                <StatisticLine text="good" value={props.good}/>
+                <StatisticLine text="neutral" value={props.neutral}/>
+                <StatisticLine text="bad" value={props.bad}/>
+                <StatisticLine text="all" value={props.all}/>
+                <StatisticLine text="average" value={getAverage(props.good, props.neutral, props.bad, props.all)}/>
+                <StatisticLine text="positive" value={getPositive() + ' %'}/>
+                </tbody>
+            </table>
         </>
     );
 }
 
 
-const App = () => {
+const Content = () => {
     const [all, setAll] = useState(0);
 
     const [good, setGood] = useState(0);
@@ -74,4 +81,4 @@ const App = () => {
     );
 }
 
-export default App;
+export default Content;
