@@ -1,0 +1,37 @@
+sequenceDiagram
+    participant browser
+    participant server
+    
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    
+    Note right of browser: Browser send new note to the server through AJAX request using POST method
+    
+    Note left of server: Server receive new note and store to the notes array
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+
+    server-->>browser: the css file
+    deactivate server
+    
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    
+    Note right of browser: The browser request notes through AJAX 
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "Note", date: "2023-01-23T13:58:08.309Z" }, ... ]
+    deactivate server    
+
+    Note right of browser: The browser executes the callback function and dinamically add the new content to DOM
