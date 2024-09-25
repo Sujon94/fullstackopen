@@ -1,7 +1,12 @@
-
-const Person = ({contact})=>{
+const Person = ({contact}) => {
     return (
-        <li>{contact}</li>
+        <div>
+            <ul>
+                {contact.map(person =>
+                    <li key={person.id}>{person.name + ' ' + person.number}</li>
+                )}
+            </ul>
+        </div>
     )
 }
 

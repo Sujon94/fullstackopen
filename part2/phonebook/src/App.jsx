@@ -56,12 +56,13 @@ const App = () => {
     return (
         <div>
             <h2>Phonebook</h2>
-            <Filter />
+            {/*<Filter />*/}
             <div>
                 search: <input onChange={e => setShow(e.target.value)}/>
             </div>
 
-            <PersonForm/>
+            <h3>Add a new</h3>
+            {/*<PersonForm/>*/}
             <form onSubmit={storeContact}>
                 <div>
                     name: <input value={newName} onChange={handleNewName}/>
@@ -70,15 +71,9 @@ const App = () => {
                 </div>
             </form>
 
-            <h2>Numbers</h2>
-            <Persons />
-            <div>
-                <ul>
-                    {contactList.map(person =>
-                        <Person key={person.id} contact={person.name + ' ' + person.number}/>
-                    )}
-                </ul>
-            </div>
+            <h3>Numbers</h3>
+            <Person contact={contactList} />
+
         </div>
     )
 
