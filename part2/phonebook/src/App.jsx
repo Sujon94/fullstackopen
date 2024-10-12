@@ -1,18 +1,19 @@
 import {useEffect, useState} from 'react'
-import axios from "axios";
 import Person from "../component/Person";
+import NoteService from "./services/notebook";
 
 const App = () => {
     const [persons, setPersons] = useState([]);
     const [newName, setNewName] = useState('');
     const [newNumber, setNewNumber] = useState('');
     const [show, setShow] = useState('');
-    const baseUrl = 'http://localhost:3002/persons';
-
+    /**
+     * Effect Hook
+     * */
     useEffect(() => {
-        axios.get(baseUrl)
+            NoteService.getAll()
             .then(res => {
-                setPersons(res.data)
+                setPersons(res)
             })
     }, []);
     /*
@@ -43,9 +44,9 @@ const App = () => {
                     name: newName,
                     number: newNumber
                 };
-                axios.post(baseUrl, contactObj)
+                NoteService.create(contactObj)
                     .then(res => {
-                        setPersons(persons.concat(res.data));
+                        setPersons(persons.concat(res));
                         setNewName('');
                         setNewNumber('');
                     });
