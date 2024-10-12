@@ -11,7 +11,7 @@ const App = () => {
      * Effect Hook
      * */
     useEffect(() => {
-            NoteService.getAll()
+        NoteService.getAll()
             .then(res => {
                 setPersons(res)
             })
@@ -63,6 +63,12 @@ const App = () => {
                 return per;
             }
         })) : persons;
+    // Action: Delete
+    const removeAPerson = (id) => {
+        NoteService.deleteItem(id).then(res => {
+            setPersons(res);
+        });
+    }
     /**
      * Visualization
      * */
@@ -85,8 +91,13 @@ const App = () => {
             </form>
 
             <h3>Numbers</h3>
-            <Person contact={contactList}/>
-
+            <div>
+                <ul>
+                    {contactList.map(person =>
+                        <Person key={person.id} contact={person} removePerson={() => removeAPerson(person.id)}/>
+                    )}
+                </ul>
+            </div>
         </div>
     )
 

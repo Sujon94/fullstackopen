@@ -19,28 +19,57 @@
       "id": "bd80",
       "content": "Example note",
       "important": false
+    },
+    {
+      "id": "7f94",
+      "content": "This is a note.",
+      "important": false
+    },
+    {
+      "id": "ce22",
+      "content": "This is another note",
+      "important": true
+    },
+    {
+      "id": "c793",
+      "content": "This is a note.",
+      "important": false
     }
   ],
   "persons": [
     {
       "name": "Arto Hellas",
       "number": "040-123456",
-      "id": "1"
+      "id": "1",
+      "important": true
     },
     {
       "name": "Ada Lovelace",
       "number": "39-44-5323523",
-      "id": "2"
+      "id": "2",
+      "important": true
     },
     {
       "name": "Dan Abramov",
       "number": "12-43-234345",
-      "id": "3"
+      "id": "3",
+      "important": true
     },
     {
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
-      "id": "4"
+      "id": "4",
+      "important": true
+    },
+    {
+      "id": "6e99",
+      "content": "sujon",
+      "important": true
+    },
+    {
+      "id": "b191",
+      "content": "sujon",
+      "important": true
     }
   ]
 }
