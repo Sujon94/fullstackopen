@@ -19,21 +19,6 @@
       "id": "bd80",
       "content": "Example note",
       "important": false
-    },
-    {
-      "id": "7f94",
-      "content": "This is a note.",
-      "important": false
-    },
-    {
-      "id": "ce22",
-      "content": "This is another note",
-      "important": true
-    },
-    {
-      "id": "c793",
-      "content": "This is a note.",
-      "important": false
     }
   ],
   "persons": [

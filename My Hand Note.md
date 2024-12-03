@@ -64,3 +64,60 @@ Create Environment
    ######Any JavaScript code within the {curly} braces is evaluated and the result of this evaluation is embedded into the defined place in the HTML produced by the component.
    
    !!! These are not HTML these are called <a href="https://reactjs.org/docs/introducing-jsx.html">JSX</a>. !!!
+
+-----------------------------
+JSON server
+-----------------------------
+##### install json server globally
+
+> npm install -g json-server
+
+*By default json-server starts running on port 3000*
+
+> json-server --port 3001 --watch db.json
+ 
+* The --watch option to track changes in json file*
+
+###### install json-server locally
+
+> npx json-server --port 3001 --watch db.json
+
+---------------------------------
+AXIOS to communicate with server
+---------------------------------
+````
+import axios from "axios";
+
+const baseUrl = 'http://localhost:3001/notes'
+
+const create = newObject => {
+const request = axios.post(baseUrl, newObject)
+return request.then(res => res.data);
+}
+
+const getAll = () => {
+const request = axios.get(baseUrl)
+const nonExisting = {
+id: 10000,
+content: 'This note is not saved to server',
+important: true
+}
+return request
+.then(res => res.data.concat(nonExisting));
+
+}
+
+const update = (id, newObject) => {
+const request = axios.put(`${baseUrl}/${id}`, newObject)
+return request.then(res => res.data);
+
+}
+
+export default {
+/*getAll: getAll,
+create: create,
+update: update
+or
+*/
+getAll, create, update}
+````

@@ -1,12 +1,16 @@
 import {useEffect, useState} from 'react'
 import Person from "../component/Person";
 import NoteService from "./services/notebook";
+import Notification from "../component/Notification";
 
 const App = () => {
     const [persons, setPersons] = useState([]);
     const [newName, setNewName] = useState('');
     const [newNumber, setNewNumber] = useState('');
     const [show, setShow] = useState('');
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
+
     /**
      * Effect Hook
      * */
@@ -46,13 +50,22 @@ const App = () => {
                 };
                 NoteService.create(contactObj)
                     .then(res => {
-                        setPersons(persons.concat(res));
+                        setSuccessMessage(`${newName} is added to phonebook.`);
+                        setTimeout(()=>{
+                            setSuccessMessage(null);
+                        }, 5000);
+
+                        NoteService.getAll().then(res=>setPersons(res));
                         setNewName('');
                         setNewNumber('');
                     });
 
             } else {
-                alert(newName + ' is already added to phonebook.')
+//                alert(newName + ' is already added to phonebook.')
+                setErrorMessage(`${newName} is already added to phonebook.`);
+                setTimeout(()=>{
+                    setErrorMessage(null);
+                }, 5000);
             }
         }
 
@@ -65,8 +78,21 @@ const App = () => {
         })) : persons;
     // Action: Delete
     const removeAPerson = (id) => {
-        NoteService.deleteItem(id).then(res => {
-            setPersons(res);
+        const person = persons.find(p=> p.id === id);
+
+        NoteService.deleteItem(id)
+            .then(res => {
+                setSuccessMessage(`${person.name} is removed.`);
+                setTimeout(()=>{
+                    setSuccessMessage(null);
+                }, 5000);
+            NoteService.getAll().then(res=>setPersons(res));
+        }).catch(e=>{
+            setErrorMessage(`${person.name} is already removed.`);
+            setTimeout(()=>{
+                setErrorMessage(null);
+            }, 5000);
+            NoteService.getAll().then(res=>setPersons(res));
         });
     }
     /**
@@ -79,7 +105,7 @@ const App = () => {
             <div>
                 search: <input onChange={e => setShow(e.target.value)}/>
             </div>
-
+            <Notification successMessage={successMessage} errorMessage={errorMessage} />
             <h3>Add a new</h3>
             {/*<PersonForm/>*/}
             <form onSubmit={storeContact}>

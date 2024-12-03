@@ -22,7 +22,11 @@ const getAll = () => {
 const update = (id, newObject) => {
     const request = axios.put(`${baseUrl}/${id}`, newObject)
     return request.then(res => res.data);
+}
 
+const remove = (id) =>{
+    const request = axios.delete(`${baseUrl}/${id}`);
+    return request.then(res => res.statusText);
 }
 
 export default {
@@ -31,4 +35,4 @@ export default {
       update: update
       or
       */
-    getAll, create, update}
+    getAll, create, update, remove}
