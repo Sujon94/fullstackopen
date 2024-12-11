@@ -3,6 +3,8 @@
 Create Environment
 ----------------------------------
 1. npx create-react-app pro_name
+   or
+   npm create vite@latest projectName -- --template react
 2. cd pro_name
 3. npm start
 ----------------------------------
