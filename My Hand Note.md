@@ -123,3 +123,35 @@ or
 */
 getAll, create, update}
 ````
+
+-------------------------
+Node and Express
+-------------------------
+To initialize node with package.json
+> npm init
+
+which will create a package.json file with
+```
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matti Luukkainen",
+  "license": "MIT"
+}
+```
+To ease server-side development with Node Express provide a better interface.
+##### To install Express
+> npm install express
+
+This will add dependency inside package.json and all the module files inside node_modules directory in project root.
+
+##### Update the dependencies of the project
+> npm update
+
+##### To install all the dependency in another computer just copy the package.json and run following
+> npm install
