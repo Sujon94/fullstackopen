@@ -155,3 +155,9 @@ This will add dependency inside package.json and all the module files inside nod
 
 ##### To install all the dependency in another computer just copy the package.json and run following
 > npm install
+
+Nodemon used to automatically reloaded after changes made like react. Following line add nodemon to devDependencies.
+#### To install
+> npm install --save-dev nodemon
+#### To run the application
+> node_modules/.bin/nodemon index.js
