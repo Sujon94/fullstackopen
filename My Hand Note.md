@@ -161,3 +161,57 @@ Nodemon used to automatically reloaded after changes made like react. Following 
 > npm install --save-dev nodemon
 #### To run the application
 > node_modules/.bin/nodemon index.js
+
+Morgan
+-------------------
+Morgan to read and log the requests and more.
+```
+const morgan = require('morgan');
+//Custom token to log the request body
+morgan.token('body', (req, res) => {
+    return JSON.stringify(req.body);
+});
+
+const customFormat = ':method :url :status :res[content-length] - :response-time ms :body';
+
+app.use(morgan(customFormat/*, {
+    stream: {
+        write: (message, req) => {
+            const match = message.match(/:method :url :status :res[^\s]+/);
+            if (match && req.method === 'POST') {
+                const postData = JSON.stringify(req.body);
+                console.log(`${match[0]} - ${postData}`);
+            } else {
+                console.log(message);
+            }
+        }
+    }
+}*/));
+```
+
+File System
+--------------
+Read and write into JSON file.
+
+```
+const fs = require('fs');
+//Read
+let data = JSON.parse(fs.readFileSync('db.json','utf-8'));
+console.log(data);
+
+//Write
+fs.writeFileSync('db.json',JSON.stringify(data,null,2);
+```
+
+CORS
+-------------
+By default, the JavaScript code of an application that runs in a browser can only communicate with a server in the same origin. Because our server is in localhost port 3001, while our frontend is in localhost port 5173, they do not have the same origin.
+
+In order to enable legitimate cross-origin requests (requests to URLs that don't share the same origin) W3C came up with a mechanism called CORS(Cross-Origin Resource Sharing).
+
+We can allow requests from other origins by using Node's cors middleware.
+
+Install cors with the command.
+```
+npm install cors
+```
