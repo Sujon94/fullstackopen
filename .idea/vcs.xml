@@ -3,5 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/part3/cloudserver/hello-fly" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/part3/phonebook/github_clone/part3-notes-backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/part3/recall/part3-notes-backend" vcs="Git" />
   </component>
 </project>

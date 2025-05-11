@@ -144,7 +144,7 @@ which will create a package.json file with
   "license": "MIT"
 }
 ```
-To ease server-side development with Node Express provide a better interface.
+To ease server-side development with Node Express library provide a better interface.
 ##### To install Express
 > npm install express
 
