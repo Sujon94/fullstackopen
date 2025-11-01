@@ -211,7 +211,13 @@ In order to enable legitimate cross-origin requests (requests to URLs that don't
 
 We can allow requests from other origins by using Node's cors middleware.
 
-Install cors with the command.
+Install cors in the response server with the command.
 ```
 npm install cors
+```
+
+DEBUG node
+------------
+```
+node --inspect index.js
 ```

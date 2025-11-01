@@ -1,0 +1,26 @@
+{
+  "name": "bmi_calculator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "calculate": "ts-node calculateBmi.ts",
+    "dev": "ts-node-dev index.ts",
+    "start": "ts-node index.ts"
+  },
+  "author": "sujon",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^5.0.3",
+    "eslint": "^9.39.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2"
+  }
+}
